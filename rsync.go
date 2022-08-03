@@ -244,7 +244,11 @@ func getArguments(options RsyncOptions) []string {
 	arguments := []string{}
 
 	if options.RsyncPath != "" {
-		arguments = append(arguments, "--rsync-path", options.RsyncPath)
+		if options.RsyncPath == "=" {
+			arguments = append(arguments, "--rsync-path=")
+		} else {
+			arguments = append(arguments, "--rsync-path", options.RsyncPath)
+		}
 	}
 
 	if options.Verbose {
