@@ -209,6 +209,11 @@ func (r Rsync) StderrPipe() (io.ReadCloser, error) {
 	return r.cmd.StderrPipe()
 }
 
+// GetCmdString returns given rsync cmd as string for debug purposes
+func (r Rsync) GetCmdString() string {
+	return r.cmd.String()
+}
+
 // Run start rsync task
 func (r Rsync) Run() error {
 	if !isExist(r.Destination) {
