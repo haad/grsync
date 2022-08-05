@@ -273,6 +273,20 @@ func TestParseArguments(t *testing.T) {
 		assert.Contains(t, args, "--rsync-path", "test")
 	})
 
+	t.Run("--rsync-path", func(t *testing.T) {
+		args := getArguments(RsyncOptions{
+			RsyncPath: "=",
+		})
+		assert.Contains(t, args, "--rsync-path=")
+	})
+
+	t.Run("--blocking-io", func(t *testing.T) {
+		args := getArguments(RsyncOptions{
+			BlockingIO: true,
+		})
+		assert.Contains(t, args, "--blocking-io")
+	})
+
 	t.Run("--existing", func(t *testing.T) {
 		args := getArguments(RsyncOptions{
 			Existing: true,
